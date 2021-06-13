@@ -1,0 +1,26 @@
+package practice.com;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Sunday_dynamic_drop_down {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+System.setProperty("webdriver.chrome.driver", "E:\\Chrome_Path\\chromedriver_win32\\chromedriver.exe");
+WebDriver driver=new ChromeDriver();
+ driver.get("https://rahulshettyacademy.com/dropdownsPractise/");
+driver.findElement(By.xpath("//*[@id=\"hlnkholidaypacks\"]")).click();
+driver.manage().window().maximize();
+driver.findElement(By.xpath("//*[@id=\"ctl00_mainContent_HolidayPackages_DropDownListPackage_CTXT\"]")).click();
+Thread.sleep(2000);
+driver.findElement(By.xpath("//*[@id=\"dropdownGroup1\"]/div/ul[1]/li[2]/a")).click();
+Thread.sleep(3000);
+driver.findElement(By.xpath("//*[@id=\"ctl00_mainContent_HolidayPackages_DropDownListFrom_CTXT\"]")).click();
+Thread.sleep(4000);
+driver.findElement(By.xpath(" //div[@id='glsctl00_mainContent_HolidayPackages_DropDownListFrom_CTNR']  //a[@value='22']")).click();
+driver.quit();
+
+}
+}
