@@ -1,0 +1,43 @@
+package pkg;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+
+public class Fromdatefield_script {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", "E:\\Chrome_Path\\chromedriver_win32\\chromedriver.exe");
+		WebDriver driver=new ChromeDriver();
+		 driver.get("https://rahulshettyacademy.com/dropdownsPractise/");//open the URL
+		// driver.findElement(By.id("ctl00_mainContent_ddl_originStation1_CTXT")).click();
+		 //driver.findElement(By.xpath("//a[@value='MAA']")).click();
+		 //Thread.sleep(2000);
+		 //driver.findElement(By.xpath("(//a[@value='JLR'])[2]")).click();
+		 //from drop down use code
+//driver.findElement(By.cssSelector(".ui-state-default")).click();
+		// driver.findElement(By.xpath("//*[@id=\"ctl00_mainContent_view_date1\"]"));
+		 // To check to date range field drop down is enable or disble check it.
+		 
+		// driver.findElement(By.)
+		 System.out.println(driver.findElement(By.id("Div1")).getAttribute("style"));
+		 driver.findElement(By.name("ctl00$mainContent$view_date2")).click();
+		System.out.println(driver.findElement(By.id("Div1")).getAttribute("style"));
+		if(driver.findElement(By.id("Div1")).getAttribute("style").contains("1"));
+		{
+			System.out.println("condition is pass");
+			Assert.assertTrue(true);
+			
+		}
+	
+		{
+		Assert.assertTrue(false);
+
+			
+		}
+	}
+}
+
+
