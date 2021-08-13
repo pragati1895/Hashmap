@@ -1,0 +1,30 @@
+package pkg;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class Frame_test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+System.setProperty("webdriver.chrome.driver", "D:\\2021-selenium classes 16012021\\Chrome_path\\chromedriver.exe");
+WebDriver driver=new ChromeDriver();
+driver.get("https://jqueryui.com/droppable/");
+//driver.switchTo().frame(1);
+driver.switchTo().frame(driver.findElement(By.cssSelector("iframe[Class='demo-frame']")));
+// To identify how many iframe is there smiple use below code 
+System.out.println(driver.findElements(By.tagName("iframe")).size());
+Actions act=new Actions(driver);
+ WebElement source=driver.findElement(By.cssSelector("div[id='draggable']"));
+WebElement dest=driver.findElement(By.cssSelector("div[id='droppable']"));
+act.dragAndDrop(source, dest).build().perform();
+// if we came back to iframe to main page use below code
+driver.switchTo().defaultContent();
+
+
+	}
+
+}
