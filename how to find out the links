@@ -1,0 +1,47 @@
+package practice.com;
+
+import java.util.Iterator;
+import java.util.Set;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Scope {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+/* give me the count of links on the page as well as findout the footer link count */
+		System.setProperty("webdriver.chrome.driver", "D:\\2021-selenium classes 16012021\\Chrome_path\\chromedriver.exe");
+		WebDriver driver=new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://rahulshettyacademy.com/AutomationPractice/");
+		System.out.println(driver.findElements(By.tagName("a")).size());
+		// in this above line showing total count links on page
+		WebElement footerlink=driver.findElement(By.xpath("//div[@id='gf-BIG']"));
+		System.out.println(footerlink.findElements(By.tagName("a")).size());
+		// findout footer signle part count 
+		 WebElement signlefooter=footerlink.findElement(By.xpath("//table/tbody/tr/td[1]/ul"));
+		System.out.println(signlefooter.findElements(By.tagName("a")).size());
+		//4. clcik on each link in the coloumn annd check if the page are opening or not. 
+		
+		for(int i=1;i<signlefooter.findElements(By.tagName("a")).size();i++)
+		{
+			String clickevent = Keys.chord(Keys.CONTROL,Keys.ENTER);
+			signlefooter.findElements(By.tagName("a")).get(i).sendKeys(clickevent);
+			Thread.sleep(5000);
+			
+		}
+		//opens all the tab/
+		Set<String>abc=driver.getWindowHandles();
+		Iterator<String> it=abc.iterator();
+		while(it.hasNext())
+		{
+			driver.switchTo().window(it.next());
+		System.out.println(driver.getTitle());
+			}
+		}
+
+}
